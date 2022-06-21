@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container">
+    <h1 class="text-center">All Posts</h1>
     <table class="table table-striped table-inverse table-responsive">
         <thead>
             <tr>
