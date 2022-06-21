@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
             $post = new Post();
             $post->title = $faker->sentence(3);
             $post->body = $faker->text(500);
-            $post->image = 'https://picsum.photos/200/300?random=' . $i;
+            $post->image = 'https://picsum.photos/500/250?random=' . $i;
             $post->save();
         }
     }

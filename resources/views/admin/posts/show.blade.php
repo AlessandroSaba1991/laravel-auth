@@ -8,6 +8,7 @@
             <h2>{{$post->title}}</h2>
             <p>{{$post->body}}</p>
         </div>
+        <a class="btn btn-primary" href="{{route('admin.posts.index')}}" role="button">Back To Dashboard</a>
     </div>
 </div>
 @endsection
