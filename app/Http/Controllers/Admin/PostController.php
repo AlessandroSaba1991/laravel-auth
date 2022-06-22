@@ -40,7 +40,7 @@ class PostController extends Controller
     {
         $validate_data = $request->validated();
         Post::create($validate_data);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('status','Post Create SuccessFull');
     }
 
     /**
@@ -76,7 +76,7 @@ class PostController extends Controller
     {
         $validate_data = $request->validated();
         $post->update($validate_data);
-        return redirect()->route('admin.posts.show',compact('post'));
+        return redirect()->route('admin.posts.show',compact('post'))->with('status',"Post $post->title Update SuccessFull");
     }
 
     /**
@@ -88,6 +88,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('status','Post Delete SuccessFull');
     }
 }

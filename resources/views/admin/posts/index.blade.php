@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container">
-    <h1 class="text-center">All Posts</h1>
+    <h1 class="text-center py-5">All Posts</h1>
+    @include('partials.message')
     <table class="table table-striped table-inverse table-responsive">
         <thead>
             <tr>
