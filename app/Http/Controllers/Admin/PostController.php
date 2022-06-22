@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all()->sortDesc();
-        return view('admin.posts.index',compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -33,14 +34,14 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\PostRequest  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PostRequest $request)
     {
         $validate_data = $request->validated();
         Post::create($validate_data);
-        return redirect()->route('admin.posts.index')->with('status','Post Create SuccessFull');
+        return redirect()->route('admin.posts.index')->with('status', 'Post Create SuccessFull');
     }
 
     /**
@@ -51,7 +52,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.posts.show',compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -62,13 +63,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit',compact('post'));
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  App\Http\Requests\PostRequest  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
@@ -76,7 +77,7 @@ class PostController extends Controller
     {
         $validate_data = $request->validated();
         $post->update($validate_data);
-        return redirect()->route('admin.posts.show',compact('post'))->with('status',"Post $post->title Update SuccessFull");
+        return redirect()->route('admin.posts.show', compact('post'))->with('status', "Post $post->title Update SuccessFull");
     }
 
     /**
@@ -88,6 +89,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index')->with('status','Post Delete SuccessFull');
+        return redirect()->route('admin.posts.index')->with('status', 'Post Delete SuccessFull');
     }
 }
